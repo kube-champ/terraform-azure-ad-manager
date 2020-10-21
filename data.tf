@@ -6,7 +6,7 @@ data "azurerm_role_definition" "sp_role_def" {
   for_each   = var.service_principals_role_assignments
 
   name  = each.value.role_name
-  scope = each.value.scope
+  scope = data.azurerm_subscription.primary.id
 }
 
 data "azurerm_role_definition" "user_role_def" {
@@ -14,7 +14,7 @@ data "azurerm_role_definition" "user_role_def" {
   for_each   = var.users_role_assignments
 
   name  = each.value.role_name
-  scope = each.value.scope
+  scope = data.azurerm_subscription.primary.id
 }
 
 data "azuread_user" "u" {
