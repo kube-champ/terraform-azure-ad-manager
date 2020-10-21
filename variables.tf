@@ -31,6 +31,13 @@ variable "applications" {
     oauth2_allow_implicit_flow : bool
     type : string
     group_membership_claims: string
+    required_resource_access: map(object({
+      resource_app_id: string
+      resource_access: map(object({
+        id: string
+        type: string
+      }))
+    }))
   }))
 }
 
